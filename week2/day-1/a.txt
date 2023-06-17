@@ -1,0 +1,9 @@
+This is a text file which is being used for understanding the fs library.
+Now type some random text to test your code in fileRead.js file.
+Ok, I think this is enough.
+
+regards,
+Anirudh Singh Siddhu
+21F1001587
+BS Data Science & It's Application
+IIT Madras
