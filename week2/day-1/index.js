@@ -21,15 +21,30 @@ function calculateSum(counter) {
   return sum;
 }
 
+function calculateFactorial(counter) {
+  let prod = 1;
+  for (var i = 1; i <= counter; i++) {
+    prod *= i;
+  }
+  return prod;
+}
 function handleSum(req, res) {
   // const counter = req.headers.counter;
   // const counter = req.query.counter;
 
-  console.log(req.body);
   counter = req.body.counter;
+
   let calculatedSum = calculateSum(counter);
-  console.log(calculatedSum);
-  res.send(`The sum is ${calculatedSum}`);
+  let calculatedMul = calculateFactorial(counter);
+  var ansObject = {
+    sum: calculatedSum,
+    factorial: calculatedMul,
+  };
+  res.status(200).send(ansObject);
+}
+
+function givePage(req, res) {
+res.sendFile(__dirname + "/index.html");
 }
 
 function sayHello(req, res) {
@@ -47,7 +62,8 @@ function deleteUser(req, res) {
   res.send("deleting user .........");
 }
 
-app.get("/", sayHello);
+app.get("/hello", sayHello);
+app.get("/", givePage);
 app.get("/handleSum", handleSum);
 app.post("/createUser", createUser);
 app.delete("/deleteUser", deleteUser);
